@@ -55,6 +55,10 @@
                         <td>ELECTRICITY</td>
                         <td>50000</td>
                     </tr>
+                    <tr>
+                        <th>TOTAL</th>
+                        <th>50000</th>
+                    </tr>
                 </table>
                 <div class="terms ">
                     <form action="">

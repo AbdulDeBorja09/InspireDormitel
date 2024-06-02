@@ -15,7 +15,7 @@
                             <th>Recipt No.</th>
                             <th>Month</th>
                             <th>Amount</th>
-                            <th colspan="2">Due Date</th>
+                            <th colspan="2">Date Paid</th>
                         </tr>
                     </thead>
                     <tbody>

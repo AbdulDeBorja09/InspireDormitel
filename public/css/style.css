@@ -292,8 +292,9 @@
     width: 50%;
 }
 .total-bills-div .terms {
-    padding: 50px 0px 0px 0px;
+    padding: 100px 0px 0px 0px;
     width: 35%;
+    text-align: justify;
 }
 .total-bills-div button {
     background-color: #35408e;
