@@ -36,4 +36,19 @@ class HomeController extends Controller
 
         return view('admin.home');
     }
+    public function profile()
+    {
+
+        return view('user.profile');
+    }
+    public function transaction()
+    {
+
+        return view('user.transaction');
+    }
+    public function bill()
+    {
+
+        return view('user.bill');
+    }
 }
