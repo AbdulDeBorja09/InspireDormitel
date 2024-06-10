@@ -47,17 +47,17 @@
 .homepage .user {
     color: #000000;
 }
-.homepage .top {
+.top {
     display: flex;
     padding: 10px 0px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.342);
     margin-bottom: 30px;
 }
-.homepage .top ion-icon {
+.top ion-icon {
     font-size: 40px;
     color: #35408e;
 }
-.homepage .top h1 {
+.top h1 {
     color: black;
     margin-left: 20px;
     font-size: 22px;
@@ -106,22 +106,22 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.342);
     margin-bottom: 30px;
 }
-.profile .top ion-icon {
+.top ion-icon {
     font-size: 40px;
     color: #35408e;
 }
-.profile .top h1 {
+.top h1 {
     color: black;
     margin-left: 20px;
     font-size: 22px;
     margin-top: 18px;
     font-weight: 600;
 }
-.profile .top a {
+.top a {
     color: #35408e;
     font-size: 18px;
 }
-.profile .top span {
+.top span {
     color: #000000;
     margin-left: 5px;
     font-size: 17px;
@@ -302,6 +302,15 @@
     padding: 3px 30px;
     border-radius: 7px;
 }
+.addtenants input,
+.addtenants select {
+    font-size: 15px;
+
+    background-color: #00000023;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
 @media screen and (max-width: 760px) {
     .navbar {
         padding: 0px 0px;
@@ -399,7 +408,7 @@
     }
 }
 @media screen and (max-width: 375px) {
-    .profile .top {
+    .top {
         margin-top: 20px;
     }
     .profile-div {

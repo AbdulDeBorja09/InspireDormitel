@@ -13,5 +13,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/admin/tenants', [App\Http\Controllers\AdminController::class, 'tenants'])->name('admin.tenants');
+    Route::get('/admin/tenants/add', [App\Http\Controllers\AdminController::class, 'Addtenant'])->name('admin.Addtenant');
+
+
+    Route::post('/admin/tenants/add', [App\Http\Controllers\AdminController::class, 'SubmitTenant'])->name('admin.Addtenant');
 });
 
