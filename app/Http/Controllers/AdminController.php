@@ -56,6 +56,7 @@ class AdminController extends Controller
     {
         Customer::where('user_id', $request->user_id)->delete();
         User::where('id', $request->user_id)->delete();
+        Bills::where('user_id', $request->user_id)->delete();
         return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
     }
    
@@ -149,4 +150,67 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.bills')->with('success', __('validation.addTenanTsucess'));
     }
+    public function Editbills($id){
+
+        $tenant = Bills::where('id', $id)->get();
+        foreach($tenant as $item){
+            $customer = Customer::where('user_id', $item->user_id)->first(); 
+            $customer->formatted_since = Carbon::parse($customer->since)->format('F j, Y');
+        }
+
+           
+
+        return view('admin.editbills', compact('tenant', 'customer'));
+    }
+
+    public function transactions(){
+        $bills = Bills::orderBy('status', 'asc')->get();
+
+
+        foreach($bills as $item){
+            $customer = Customer::where('user_id', $item->user_id)->first();
+            $item->name = $customer->name;
+
+            $item->due = Carbon::parse($item->due)->format('F j, Y');
+            $item->receiptdate = Carbon::parse($item->created_at)->format('F j, Y');
+            $item->month = Carbon::createFromFormat('m', $item->month)->format('F');
+        }
+        return view('admin.transactions', compact('bills'));
+    }
+    public function UpdateBills(Request $request){
+        $request->validate([
+            'user_id' => 'required',
+            'month' => 'required',
+            'rent' => 'required|numeric',
+            'water' => 'required|numeric',
+            'internet' => 'required|numeric',
+            'electricity' => 'required|numeric',
+            'due' => 'required|string',
+        ]);
+        Bills::where('month', $request->month)->where('user_id', $request->user_id)->update([
+            'rent' => $request->rent,
+            'water' => $request->water,
+            'internet' => $request->internet,
+            'electricity' => $request->electricity,
+            'total' => $request->rent + $request->water + $request->internet + $request->electricity,
+            'due' => $request->due,
+            'updated_at' => now(),
+        ]);
+        return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
+    }
+    public function paid(Request $request){
+            $request->validate([
+                'id' => 'required',
+            ]);
+            Bills::where('id', $request->id)->update([
+                'status' => 'paid',
+            ]);
+        return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
+    }
+    public function pending(Request $request){
+        Bills::where('id', $request->id)->update([
+            'status' => 'pending',
+        ]);
+    return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
+}
 }

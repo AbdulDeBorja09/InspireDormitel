@@ -22,10 +22,10 @@
             <p>A place where your bill will show. Including your water bill, electric bill, rent bill, and internet bill.</p>
           </div>
         </a>
-        <a class="homemenu-box shadow-sm d-flex" href="{{url('transaction')}}">
-          <ion-icon class="profile-icon" name="stats-chart" style="font-size: 40px; margin-top: -7px"></ion-icon>
+        <a class="homemenu-box shadow-sm d-flex" href="{{url('admin/transactions')}}">
+          <ion-icon class="profile-icon" name="cash" style="font-size: 40px; margin-top: -7px"></ion-icon>
           <div class="description ">
-            <h6><ion-icon name="folder-outline"></ion-icon> Payments</h6>
+            <h6><ion-icon name="folder-outline"></ion-icon> Transactions</h6>
             <p>Stores and tracks all tenant payment information.</p>
           </div>
         </a>
