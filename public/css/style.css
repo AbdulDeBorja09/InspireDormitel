@@ -213,16 +213,17 @@
     text-align: center;
     width: 10%;
 }
-.table-container table button {
+.table-container table a {
     border: 0;
     background-color: #35408e;
     color: white;
     padding: 0px 30px;
     border-radius: 10px;
 }
-.table-container table button ion-icon {
+.table-container table a ion-icon {
     font-size: 20px;
     margin-top: 5px;
+    color: white;
 }
 .bills-flex {
     display: flex;

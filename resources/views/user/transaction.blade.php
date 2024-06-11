@@ -19,107 +19,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($bill as $item)
                         <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
+                            <td>ID-{{$item->receipt}}</td>
+                            <td>{{$item->bmonth}}</td>
+                            <td>{{$item->total}}.00</td>
+                            <td>{{$item->paid}}</td>
+                            <td>
+                                <a type="submit" href="history/{{$item->id}}"><ion-icon name="eye"></ion-icon></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
-                        <tr>
-                            <td>ID-213123132</td>
-                            <td>Janauary</td>
-                            <td>5000.00</td>
-                            <td>03/24/24</td>
-                            <td><button><ion-icon name="eye"></ion-icon></button></td>
-                        </tr>
+    
+                        @endforeach
                     </tbody>
                 </table>
             </div>

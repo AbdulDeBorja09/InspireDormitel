@@ -9,6 +9,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('user.profile');
     Route::get('/transaction', [App\Http\Controllers\HomeController::class, 'transaction'])->name('user.transaction');
     Route::get('/bill', [App\Http\Controllers\HomeController::class, 'bill'])->name('user.bill');
+    Route::get('/history/{id}', [App\Http\Controllers\HomeController::class, 'history'])->name('user.history');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -19,6 +20,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/bills', [App\Http\Controllers\AdminController::class, 'bills'])->name('admin.bills');
     Route::get('/admin/bills', [App\Http\Controllers\AdminController::class, 'bills'])->name('admin.bills');
     Route::get('/admin/bills/{id}', [App\Http\Controllers\AdminController::class, 'AddBills'])->name('admin.AddBills');
+
     
     Route::post('/admin/tenant/delete', [App\Http\Controllers\AdminController::class, 'deleteTenant'])->name('admin.deleteTenant');
     Route::post('/admin/tenant/edit', [App\Http\Controllers\AdminController::class, 'SubmitEditTenant'])->name('admin.SubmitEditTenant');

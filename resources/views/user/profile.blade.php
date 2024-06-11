@@ -25,21 +25,18 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <p>{{$item->name}}</p>
                 </div>
-
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Email:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <p>{{$item->email}}</p>
                 </div>
-
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Age:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <p>{{$item->age}}</p>
                 </div>
-
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Unit Number:</h1>
                 </div>

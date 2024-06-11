@@ -48,7 +48,7 @@ class AdminController extends Controller
                 'unit' => $request->unit,
                 'since' => $request->since,
                 'image' => $imagePath,
-                'created_at' => now(),
+                'updated_at' => now(),
         ]);
         return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
     }
@@ -120,21 +120,23 @@ class AdminController extends Controller
             'electricity' => 'required|numeric',
             'due' => 'required|string',
         ]);
+        $receiptNumber = Bills::generateReceiptNumber();
+
         $existingbill = Bills::where('month', $request->month)->where('user_id', $request->user_id)->latest('id')->first();
         if($existingbill ){
-            Bills::where('id',  $request->user_id)->update([
-                'month' =>  $request->month,
+            Bills::where('month', $request->month)->where('user_id', $request->user_id)->update([
                 'rent' => $request->rent,
                 'water' => $request->water,
                 'internet' => $request->internet,
                 'electricity' => $request->electricity,
                 'total' => $request->rent + $request->water + $request->internet + $request->electricity,
                 'due' => $request->due,
-                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }else{
             Bills::create([
                 'user_id' =>  $request->user_id,
+                'receipt' => $receiptNumber,
                 'month' =>  $request->month,
                 'rent' => $request->rent,
                 'water' => $request->water,
@@ -145,8 +147,6 @@ class AdminController extends Controller
                 'created_at' => now(),
             ]);
         }
-        
-        
         return redirect()->route('admin.bills')->with('success', __('validation.addTenanTsucess'));
     }
 }

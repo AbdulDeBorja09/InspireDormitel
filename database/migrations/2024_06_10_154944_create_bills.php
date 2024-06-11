@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->string('receipt');
             $table->string('month');
             $table->integer('rent');
             $table->integer('water');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->integer('electricity');
             $table->integer('total');
             $table->string('due');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

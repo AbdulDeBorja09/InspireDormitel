@@ -35,7 +35,7 @@
                 <h1>Unit: {{$customer->unit}}</h1>
             </div>
             <div class="total-bills-div d-flex">
-                <table class="total-table table">
+                <table class="total-table table w-100">
                     <tr>
                         <th>BILLS</th>
                         <th>AMOUNT</th>
@@ -61,13 +61,10 @@
                         <th>{{$item->total}}</th>
                     </tr>
                 </table>
-                <div class="terms ">
+                <div class="terms w-100" style="margin-bottom: 150px ">
                     <form action="">
-                        <p>I hereby confirm that I have thoroughly reviewed all the bills presented to me. I have carefully examined each item and found them to be accurate and satisfactory. I have no concerns or objections regarding any of the bills. Therefore, I approve these bills for printing.</p>
-                        <input id="check" type="checkbox" required>
-                        <label for="check">Confrim</label>
-                       <div class="text-center">
-                        <button class="text-center">PRINT</button>
+                       <div class="text-center w-100">
+                          <button class="text-center btn-dark" disabled>PAID</button>
                        </div>
                     </form>
                 </div>
