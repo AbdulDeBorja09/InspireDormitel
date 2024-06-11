@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Bills extends Model
 {
     use HasFactory;
-    protected $table = 'customer';
+    protected $table = 'bills';
     protected $fillable = [
         'user_id',
-        'name',
-        'email',
-        'age',
-        'unit',
-        'since',
-        'image',
+        'month',
+        'rent',
+        'water',
+        'internet',
+        'electricity',
+        'total',
+        'due',
         'created_at',
         'updated_at',
     ];

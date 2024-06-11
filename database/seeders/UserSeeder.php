@@ -42,6 +42,7 @@ class UserSeeder extends Seeder
              'age' => '20',
              'unit' => '3rd Floor, 3F1',
              'since' => 'June 20, 2023',
+             'image' => 'profile.png',
              'created_at' => now()
             ],
          ]);

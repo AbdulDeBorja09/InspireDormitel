@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-
+use App\Models\Customer;
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     /**
@@ -38,8 +39,13 @@ class HomeController extends Controller
     }
     public function profile()
     {
+        $id = Auth::id();
+        $profile = Customer::where('user_id', $id)->get();
 
-        return view('user.profile');
+        foreach ($profile as $item) {
+            $item->formatted_since = Carbon::parse($item->since)->format('F j, Y');
+        }
+        return view('user.profile', compact('profile'));
     }
     public function transaction()
     {

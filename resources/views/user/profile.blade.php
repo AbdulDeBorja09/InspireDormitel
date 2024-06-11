@@ -5,14 +5,15 @@
             <ion-icon name="person" ></ion-icon>
             <h1><a href="{{url('/')}}" >Home</a><span>></span> Profile</h1>
         </div>
+        @foreach ($profile as $item)
         <div class="profile-div">
             <div class="image">
-                <img src="{{url('/image/profile.jpg')}}" alt="">
+                <img src="{{ Storage::url($item->image) }}" alt="">
             </div>
             <div class="biography">
-                <h1>Dela Cruz, Juan Miguel</h1>
-                <h2>08121 Purok 4 dila bay laguna </h2>
-                <h2>Juanmiguel@gmail.com</h2>
+                <h1>{{$item->name}}</h1>
+                <h2>{{$item->email}}</h2>
+                <h2>{{$item->formatted_since }}</h2>
             </div>
         </div>
         <div class="information-div">
@@ -22,46 +23,40 @@
                     <h1>Full Name:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>Juan Dela Cruz</p>
+                    <p>{{$item->name}}</p>
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Email:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>Juanmiguel@gmail.com</p>
+                    <p>{{$item->email}}</p>
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Age:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>20</p>
-                </div>
-
-                <div class="col-lg-5 col-md-6 col-sm-12">
-                    <h1>Floor Number:</h1>
-                </div>
-                <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>3rd Floor</p>
+                    <p>{{$item->age}}</p>
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Unit Number:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>3F1</p>
+                    <p>{{$item->unit}}</p>
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <h1>Tenant Since:</h1>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <p>June 20, 2023</p>
+                    <p>{{$item->formatted_since }}</p>
                 </div>
                 
             </div>
         </div>
+        @endforeach
         <div class="text-center">
            <button onclick="history.back()" class="back-button"><< BACK</button>
         </div>
