@@ -341,6 +341,11 @@
     padding: 5px 20px;
     border-radius: 7px;
 }
+.customers-div button {
+    border: 1px solid #35408e;
+    color: #35408e;
+    padding: 5px 40px;
+}
 .customers-div .button {
     margin-top: 10px;
 }

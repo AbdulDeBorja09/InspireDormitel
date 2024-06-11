@@ -8,18 +8,57 @@ use App\Models\Customer;
 use App\Models\User;
 use App\Models\Bills;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {   
     public function tenants()
-    {
-        return view('admin.tenants');
+    {   
+        $tenants = Customer::get();
+        return view('admin.tenants', compact('tenants'));
     }
     public function Addtenant()
     {
         return view('admin.addtenants');
     }
+    public function EditTenant($id)
+    {   
+        $tenant = Customer::where('user_id', $id)->get();
+        foreach ($tenant as $item) {
+            $item->formatted_since = Carbon::parse($item->since)->format('F j, Y');
+        }
+        return view('admin.edittenant', compact('tenant'));
+    }
+    public function SubmitEditTenant(Request $request)
+    {   
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'age' => 'required|string|max:255',
+            'unit' => 'required|string|max:255',
+            'since' => 'required|date',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $tenant = Customer::where('user_id', $request->user_id)->first();
+        Storage::disk('public')->delete($tenant->image);
 
+        $imagePath = $request->file('image')->store('image', 'public');
+        Customer::where('user_id', $request->user_id)->update([
+                'name' => $request->name,
+                'age' => $request->age,
+                'unit' => $request->unit,
+                'since' => $request->since,
+                'image' => $imagePath,
+                'created_at' => now(),
+        ]);
+        return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
+    }
+    public function deleteTenant(Request $request)
+    {
+        Customer::where('user_id', $request->user_id)->delete();
+        User::where('id', $request->user_id)->delete();
+        return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
+    }
+   
     public function bills()
     {   
         $tenants = Customer::get();
@@ -83,7 +122,7 @@ class AdminController extends Controller
         ]);
         $existingbill = Bills::where('month', $request->month)->where('user_id', $request->user_id)->latest('id')->first();
         if($existingbill ){
-            Bills::where('id',  $existingbill)->update([
+            Bills::where('id',  $request->user_id)->update([
                 'month' =>  $request->month,
                 'rent' => $request->rent,
                 'water' => $request->water,
@@ -93,9 +132,6 @@ class AdminController extends Controller
                 'due' => $request->due,
                 'created_at' => now(),
             ]);
-           
-               
-
         }else{
             Bills::create([
                 'user_id' =>  $request->user_id,

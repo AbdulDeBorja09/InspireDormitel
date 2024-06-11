@@ -15,7 +15,7 @@
             <p>A brief summary of you. Including your name, photo, and address. You can edit your login credentials here. </p>
           </div>
         </a>
-        <a class="homemenu-box shadow-sm d-flex"  href="{{url('bill')}}" >
+        <a class="homemenu-box shadow-sm d-flex"  href="{{url('admin/bills')}}" >
           <ion-icon class="profile-icon" name="receipt"></ion-icon>
           <div class="description ">
             <h6><ion-icon name="folder-outline"></ion-icon> Bills</h6>
