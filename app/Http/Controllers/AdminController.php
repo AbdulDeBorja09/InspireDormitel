@@ -54,9 +54,14 @@ class AdminController extends Controller
     }
     public function deleteTenant(Request $request)
     {
+
+        $tenant = Customer::where('user_id', $request->user_id)->first();
+        Storage::disk('public')->delete($tenant->image);
+        
         Customer::where('user_id', $request->user_id)->delete();
         User::where('id', $request->user_id)->delete();
         Bills::where('user_id', $request->user_id)->delete();
+
         return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
     }
    
@@ -84,7 +89,7 @@ class AdminController extends Controller
             'since' => 'required|date',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-         $imagePath = $request->file('image')->store('image', 'public');
+        $imagePath = $request->file('image')->store('image', 'public');
         $existingUser = User::where('email', $request->email)->first();
         if($existingUser){
             return redirect()->back()->with('error',  __('validation.addTenanTerror'));
@@ -196,7 +201,7 @@ class AdminController extends Controller
             'due' => $request->due,
             'updated_at' => now(),
         ]);
-        return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
+        return redirect()->route('admin.tenants')->with('success', __('validation.addTenanTsucess'));
     }
     public function paid(Request $request){
             $request->validate([
@@ -212,5 +217,11 @@ class AdminController extends Controller
             'status' => 'pending',
         ]);
     return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
-}
+    }
+
+    public function deleteBills(Request $request)
+    {
+        Bills::where('user_id', $request->user_id)->delete();
+        return redirect()->route('admin.transactions')->with('success', __('validation.addTenanTsucess'));
+    }
 }

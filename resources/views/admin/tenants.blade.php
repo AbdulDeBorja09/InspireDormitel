@@ -6,7 +6,7 @@
             <ion-icon name="person" ></ion-icon>
             <h1><a href="{{url('/admin/home')}}" >Home</a><span>></span> Tenants</h1>
         </div>
-        <div class="add">
+        <div class="add-tenant-btn text-center">
           <a href="{{url('/admin/tenants/add')}}">Add Tenants</a>
         </div>
         @foreach ($tenants as $item)

@@ -350,6 +350,24 @@
 .customers-div .button {
     margin-top: 10px;
 }
+.status-change-div {
+    justify-content: space-evenly;
+    margin-top: -50px;
+}
+
+.status-change-div button {
+    background-color: #35408e;
+    color: white;
+    padding: 5px 30px;
+    width: 150px;
+}
+.add-tenant-btn a {
+    background-color: #35408e;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 7px;
+}
 @media screen and (max-width: 760px) {
     .navbar {
         padding: 0px 0px;

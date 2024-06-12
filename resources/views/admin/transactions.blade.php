@@ -31,7 +31,7 @@
                             <td class="d-flex">
                                 <a type="submit" href="bills/edit/{{$item->id}}"><ion-icon name="eye"></ion-icon></a>
                                 <button class="btn" onclick="event.preventDefault(); document.getElementById('delete').submit()">Delete</button>
-                                <form action="{{route('admin.deleteTenant')}}" id="delete" method="POST">
+                                <form action="{{route('admin.deleteBills')}}" id="delete" method="POST">
                                     @csrf
                                     @method('POST')
                                     <input type="hidden" name="user_id" value="{{$item->user_id}}">

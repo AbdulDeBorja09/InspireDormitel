@@ -90,22 +90,22 @@
                 <h3 id="total">: {{$item->total}}.00</h3>
             </div>
             <div class="text-center p-5">
-                <button class="btn" type="submit">SUBMIT</button>
+                <button class="btn w-50 btn-success" type="submit">SUBMIT</button>
             </div>
         </form>
-        <div class="status-change-div">
+        <div class="status-change-div d-flex ">
             <form action="{{route('admin.paid')}}" method="POST">
                 @csrf
                 @method('POST')
                 <input type="hidden" name="id" value="{{$item->id}}">
-                <button type="submit">PAID</button>
+                <button class="status-btn btn" type="submit">PAID</button>
             </form>
 
             <form action="{{route('admin.pending')}}" method="POST">
                 @csrf
                 @method('POST')
                 <input type="hidden" name="id" value="{{$item->id}}">
-                <button type="submit">PENDING</button>
+                <button class="status-btn btn" type="submit">PENDING</button>
             </form>
         </div>
     </div>

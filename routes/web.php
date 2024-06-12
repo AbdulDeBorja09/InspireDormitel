@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('user.profile');
@@ -31,5 +32,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/bills/update', [App\Http\Controllers\AdminController::class, 'UpdateBills'])->name('admin.UpdateBills');
     Route::post('/admin/bills/paid', [App\Http\Controllers\AdminController::class, 'paid'])->name('admin.paid');
     Route::post('/admin/bills/pending', [App\Http\Controllers\AdminController::class, 'pending'])->name('admin.pending');
+    Route::post('/admin/bills/delete', [App\Http\Controllers\AdminController::class, 'deleteBills'])->name('admin.deleteBills');
 });
 
